@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Online Tools - CGPA, BMI, EMI, Age, Percentage Calculator | ToolHub India</title>
+<meta name="description" content="Free online calculators: CGPA to Percentage, BMI Calculator, Age Calculator, EMI Calculator, Word Counter and Percentage Calculator. No signup, instant results, mobile friendly.">
+<meta name="keywords" content="cgpa to percentage calculator, bmi calculator, emi calculator, age calculator, word counter, percentage calculator, free online tools india">
+<meta name="author" content="ToolHub India">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Free Online Tools - ToolHub India">
+<meta property="og:description" content="6 free calculators in one place: CGPA, BMI, Age, EMI, Word Counter & Percentage. Instant, no signup.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="style.css">
+<!-- PWA: installable app (replaces the Play Store app at $0 — see ../pwa/README-PWA.md) -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#111827">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SFH Tools">
+<!-- Apple touch icon: PLACEHOLDER — icons/apple-touch-icon.png is a simple generated
+     navy/amber "S" badge (180x180). Replace it with the final Sampath Facts Hub logo
+     PNG (180x180, no transparency) whenever the brand logo is finalized. -->
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">Tool<span>Hub</span> India</a>
+    <nav>
+      <a href="#cgpa">CGPA</a>
+      <a href="#bmi">BMI</a>
+      <a href="#age">Age</a>
+      <a href="#emi">EMI</a>
+      <a href="#word">Word Counter</a>
+      <a href="#percent">Percentage</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Free Online Tools — Fast, No Signup</h1>
+    <p>6 everyday calculators students and families actually need. Works on mobile, results instantly in your browser — nothing is uploaded.</p>
+  </section>
+
+  <!-- AdSense Placeholder: Header Banner -->
+  <!-- Replace this div with your AdSense code after approval: <ins class="adsbygoogle" ...> -->
+  <div class="ad-placeholder" aria-hidden="true">AdSense Placeholder — Header Banner (728×90 / Responsive)</div>
+
+  <!-- 1. CGPA -->
+  <section id="cgpa" class="tool-card">
+    <h2>1. CGPA to Percentage Calculator</h2>
+    <p class="hint">Standard formula used by CBSE / most Indian universities: Percentage = CGPA × 9.5</p>
+    <div class="grid">
+      <label>CGPA (0–10) <input type="number" id="cgpaInput" placeholder="e.g. 8.23" step="0.01" min="0" max="10"></label>
+      <label>Multiplier <input type="number" id="cgpaMultiplier" value="9.5" step="0.1"></label>
+    </div>
+    <button onclick="calculateCGPA()">Calculate</button>
+    <div class="result" id="cgpaResult"></div>
+  </section>
+
+  <!-- 2. BMI -->
+  <section id="bmi" class="tool-card">
+    <h2>2. BMI Calculator</h2>
+    <div class="grid">
+      <label>Weight (kg) <input type="number" id="bmiWeight" placeholder="e.g. 65" step="0.1"></label>
+      <label>Height (cm) <input type="number" id="bmiHeight" placeholder="e.g. 170" step="0.1"></label>
+    </div>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="bmiResult"></div>
+  </section>
+
+  <!-- AdSense Placeholder: In-Content -->
+  <div class="ad-placeholder" aria-hidden="true">AdSense Placeholder — In-Content (Responsive)</div>
+
+  <!-- 3. Age -->
+  <section id="age" class="tool-card">
+    <h2>3. Age Calculator</h2>
+    <label>Date of Birth <input type="date" id="dobInput"></label>
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div class="result" id="ageResult"></div>
+  </section>
+
+  <!-- 4. EMI -->
+  <section id="emi" class="tool-card">
+    <h2>4. EMI Calculator</h2>
+    <div class="grid">
+      <label>Loan Amount (₹) <input type="number" id="emiPrincipal" placeholder="e.g. 500000"></label>
+      <label>Interest Rate (% / year) <input type="number" id="emiRate" placeholder="e.g. 10.5" step="0.01"></label>
+      <label>Tenure (months) <input type="number" id="emiMonths" placeholder="e.g. 60"></label>
+    </div>
+    <button onclick="calculateEMI()">Calculate EMI</button>
+    <div class="result" id="emiResult"></div>
+  </section>
+
+  <!-- 5. Word Counter -->
+  <section id="word" class="tool-card">
+    <h2>5. Word Counter</h2>
+    <textarea id="wordInput" rows="7" placeholder="Type or paste your text here..." oninput="countWords()"></textarea>
+    <div class="result" id="wordResult">Words: 0 · Characters: 0 · Characters (no spaces): 0 · Sentences: 0 · Reading time: 0 min</div>
+  </section>
+
+  <!-- AdSense Placeholder: In-Content 2 -->
+  <div class="ad-placeholder" aria-hidden="true">AdSense Placeholder — In-Content 2 (Responsive)</div>
+
+  <!-- 6. Percentage -->
+  <section id="percent" class="tool-card">
+    <h2>6. Percentage Calculator</h2>
+    <h3>What is X% of Y?</h3>
+    <div class="grid">
+      <label>X (%) <input type="number" id="pctX" placeholder="e.g. 20"></label>
+      <label>Y <input type="number" id="pctY" placeholder="e.g. 500"></label>
+    </div>
+    <button onclick="calculatePercentOf()">Calculate</button>
+    <div class="result" id="pctOfResult"></div>
+    <hr>
+    <h3>X is what % of Y?</h3>
+    <div class="grid">
+      <label>X <input type="number" id="pctA" placeholder="e.g. 50"></label>
+      <label>Y <input type="number" id="pctB" placeholder="e.g. 200"></label>
+    </div>
+    <button onclick="calculateWhatPercent()">Calculate</button>
+    <div class="result" id="pctWhatResult"></div>
+  </section>
+
+  <section class="seo-text">
+    <h2>Why use these tools?</h2>
+    <p>Students need CGPA to percentage conversion for placements and higher studies. BMI helps track health. EMI calculator helps plan loans before visiting a bank. Age calculator is needed for exam and job forms. Word counter helps with essays and assignments. All tools run 100% in your browser.</p>
+  </section>
+
+  <!-- AdSense Placeholder: Footer -->
+  <div class="ad-placeholder" aria-hidden="true">AdSense Placeholder — Footer (Responsive)</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>ToolHub India</strong> — Free tools for students, families & professionals.</p>
+    <p>Disclaimer: Results are indicative. For CGPA conversion, confirm your university's official formula. For health / loan decisions, consult a professional.</p>
+    <p>© 2026 ToolHub India. All rights reserved.</p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
